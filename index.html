@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Homework JS 21-12</title>
+    <link rel="stylesheet" href="css/style.css"/>
+</head>
+
+<body>
+    <script type="text/template" id="test">
+        <div class="wrapper">
+            <h2 class="title">Тестирование</h2>
+            <form class="question-box" action="index.html" method="post">
+                <% for(i = 0; i < memory.length; i++) { %>
+                    <ul class="<%= 'question' + (i + 1) %>">
+                        <span><%= memory[i].question %></span>
+                        <% for(j = 0, a = 97; j < memory[i].answers.length; j++, a++) { %>
+                            <li class="<%= 'question-answer ' + (i + 1) + (j + 1) %>">
+                                <label for="<%= 'check' + (i + 1) + (j + 1) %>">
+                                    <p><%= String.fromCharCode(a) + ')' %></p>
+                                    <input type="checkbox" id="<%= 'check' + (i + 1) + (j + 1) %>" data-index="<%= 'index' + (i + 1) + (j + 1) %>" value="<%= memory[i].value[j] %>">
+                                    <p>
+                                        <%= memory[i].answers[j] %>
+                                    </p>
+                                </label>
+                            </li>
+                            <% } %>
+                    </ul>
+                    <% } %>
+            </form>
+            <form class="button" action="index.html" method="post">
+                <input type="button" name="checkresults" value="Проверить мои результаты">
+            </form>
+        </div>
+    </script>
+    <div class="modal-window">
+        <div class="modal-header">
+            <span class="modal-title"></span>
+            <span class="modal-close">×</span>
+        </div>
+        <div class="modal-body">
+            <span class="modal-result"></span>
+        </div>
+        <div class="modal-footer">
+            <form class="modal-buttons" action="index.html" method="post">
+                <input type="button" name="name" value="Повторить попытку">
+            </form>
+        </div>
+    </div>
+    <div class="overlay">
+
+    </div>
+
+    <!-- SCRIPTS -->
+
+    <script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/lodash.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+    </body>
+
+</html>
